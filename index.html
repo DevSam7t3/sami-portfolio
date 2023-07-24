@@ -4,11 +4,52 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lugrasimo&family=Rubik:wght@300;400;500;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- custom styles -->
+    <link rel="stylesheet" href="./style.scss" />
     <title>Devsam - Portfolio</title>
   </head>
   <body>
-    <div>hello</div>
+    <main id="main">
+      <!-- loader -->
+      <div class="loader">
+        <div class="heading__top">
+          <h5 class="reveal">web Portfolio</h5>
+          <h5 class="reveal">&copy; <span class="year"></span></h5>
+        </div>
+        <h2 class="reveal">
+          <span>Dev</span> <span class="font-fancy">Sam</span> <span>is</span>
+          <span>a</span>
+        </h2>
+      </div>
+      <div class="green-overlay"></div>
+      <div id="home">
+        <nav class="nav">
+          <div class="container">
+            <ul class="nav__list">
+              <li class="nav__item">
+                <a href="#" class="nav__link">Samiullah</a>
+              </li>
+              <li class="nav__item">
+                <a href="#" class="nav__link">Skills</a>
+              </li>
+              <li class="nav__item">
+                <a href="#" class="nav__link">Projects</a>
+              </li>
+              <li class="nav__item">
+                <a href="#" class="nav__link">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </main>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
