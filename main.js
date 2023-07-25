@@ -1,4 +1,3 @@
-import Lenis from "@studio-freight/lenis";
 import { Circ, Expo, Power3, gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -8,8 +7,29 @@ gsap.registerPlugin(ScrollTrigger);
 // copyright year update
 const yearSpan = document.querySelector(".reveal .year");
 
-const currentYear = new Date().getFullYear();
+const date = new Date();
+const currentYear = date.getFullYear();
 yearSpan.textContent = currentYear;
+
+// updating local time of pakistan
+const localTimeHeading = document.querySelector(".local-time");
+
+const localTime = date.toLocaleTimeString([], {
+  timeZone: "Asia/karachi",
+  hourCycle: "h12",
+  hour: "2-digit",
+  minute: "2-digit",
+});
+
+localTimeHeading.textContent = localTime;
+
+// locomotive initialization
+(function () {
+  const scroll = new LocomotiveScroll({
+    el: document.querySelector("#main"),
+    smooth: true,
+  });
+})();
 
 function valuesSetters() {
   gsap.set(".nav a", { y: "-100%", opacity: 0 });
@@ -38,22 +58,6 @@ function createSpan() {
     elem.innerHTML = "";
     elem.appendChild(spanParent);
   });
-}
-
-// smooth scroll
-function lenisScroll() {
-  const lenis = new Lenis();
-
-  lenis.on("scroll", (e) => {
-    console.log(e);
-  });
-
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-
-  requestAnimationFrame(raf);
 }
 
 function loaderAnimation() {
@@ -126,7 +130,6 @@ function animateHero() {
     });
 }
 // calling functions
-lenisScroll();
 createSpan();
 valuesSetters();
 loaderAnimation();

@@ -11,6 +11,10 @@
       href="https://fonts.googleapis.com/css2?family=Lugrasimo&family=Rubik:wght@300;400;500;600;800&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.css"
+    />
     <!-- custom styles -->
     <link rel="stylesheet" href="./style.scss" />
     <title>Devsam - Portfolio</title>
@@ -29,26 +33,26 @@
       </h2>
       <div class="green-overlay"></div>
     </div>
+    <!-- navbar -->
+    <nav class="nav">
+      <div class="container">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="/" class="nav__link">Samiullah</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link">Skills</a>
+          </li>
+          <li class="nav__item">
+            <a href="#work" class="nav__link">Projects</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <main id="main">
-      <!-- navbar -->
-      <nav class="nav">
-        <div class="container">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a href="#" class="nav__link">Samiullah</a>
-            </li>
-            <li class="nav__item">
-              <a href="#" class="nav__link">Skills</a>
-            </li>
-            <li class="nav__item">
-              <a href="#" class="nav__link">Projects</a>
-            </li>
-            <li class="nav__item">
-              <a href="#" class="nav__link">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
       <!-- hero section -->
       <div id="home">
         <div class="row row1">
@@ -58,8 +62,8 @@
             <h5 class="reveal">FREELANCE WORLDWIDE</h5>
           </div>
           <div class="text text2">
-            <h5 class="reveal">MY LOCAL TIME 10:59</h5>
-            <h5 class="reveal">GMT (+5:30)</h5>
+            <h5 class="reveal">MY LOCAL TIME</h5>
+            <h5 class="reveal local-time"></h5>
           </div>
         </div>
         <div class="row row2">
@@ -243,7 +247,59 @@
           <div class="img__container"></div>
         </div>
       </div>
+      <!-- work section -->
+      <div id="work" class="work">
+        <div class="work__row">
+          <!-- TODO: update the number of projects -->
+          <h3>
+            Feat Wo<span class="font-fancy">r&nbsp;</span>k
+            <div class="mini">(05)</div>
+          </h3>
+          <svg
+            class="o-ui-arrow"
+            width="64"
+            height="64"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3.10162 3.10156L62.9999 62.9999"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+            <path
+              d="M63 1.00001L63 63L0.999989 63"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </svg>
+        </div>
+        <div class="work__images">
+          <!-- project 1 -->
+          <div class="images__container images__container-1">
+            <img
+              data-scroll
+              data-scroll-speed="-1.5"
+              src="https://abhishekjha.me/aeizei.7edf201c.png"
+              alt=""
+            />
+          </div>
+
+          <!-- project 2  -->
+          <div class="images__container images__container-2">
+            <img
+              data-scroll
+              data-scroll-speed="-1.5"
+              src="https://abhishekjha.me/display.835f9d62.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
+
     <script type="module" src="/main.js"></script>
   </body>
 </html>

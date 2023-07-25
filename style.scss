@@ -13,6 +13,7 @@ body {
 }
 
 .font-fancy {
+  color: #14cf93;
   font-style: italic;
   font-family: "Lugrasimo", cursive;
 }
@@ -24,23 +25,17 @@ body {
 }
 
 ::-webkit-scrollbar {
-  display: none;
+  width: 12px;
+  background-color: #14cf93;
 }
-// ::-webkit-scrollbar {
-//   width: 12px;
-// }
-// ::-webkit-scrollbar-track {
-//   background: #111;
-// }
-// ::-webkit-scrollbar-thumb {
-//   background-color: #14cf93;
-//   border-radius: 20px;
-// }
+
+::-webkit-scrollbar-thumb {
+  background-color: #14cf93;
+}
 
 // loader styles
 .loader {
-  // display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 9999;
@@ -104,7 +99,7 @@ body {
   width: 100%;
   padding-top: 80px;
   margin-top: 80px;
-  height: 80vh;
+  height: 100vh;
 
   @media screen and (max-width: 768px) {
     padding-top: 30px;
@@ -218,6 +213,7 @@ body {
 
 // about section styles
 .imagery {
+  position: relative;
   padding-top: 15vw;
   display: flex;
   align-items: center;
@@ -226,19 +222,27 @@ body {
   width: 100%;
   padding: 0 5vw;
 
+  @media screen and (max-width: 568px) {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__left {
+    position: relative;
     width: 35%;
     height: auto;
+
+    @media screen and (max-width: 368px) {
+      width: 70%;
+      padding-bottom: 100px;
+    }
 
     h2 {
       letter-spacing: 1px;
       font-size: clamp(0.9rem, 2vw, 1.6rem);
       font-weight: 500;
       color: #333;
-
-      span {
-        color: #14cf93;
-      }
     }
   }
 
@@ -250,6 +254,10 @@ body {
     height: 300px;
     width: 65%;
 
+    @media screen and (max-width: 368px) {
+      width: 100%;
+    }
+
     .img__container {
       top: 10%;
       position: absolute;
@@ -258,9 +266,16 @@ body {
       border-radius: 1vw;
       filter: grayscale(1);
       transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+      z-index: 5;
 
-      @media screen and (min-width: 768px) {
+      @media screen and (max-width: 368px) {
         height: 35vw;
+      }
+
+      @media screen and (max-width: 368px) {
+        top: -35%;
+        height: 80vw;
+        width: 60vw;
       }
 
       &:hover {
@@ -285,6 +300,92 @@ body {
         background-position: center;
         transform: translate(30%, 20%) rotate(10deg);
       }
+    }
+  }
+}
+
+// work section
+.work {
+  position: relative;
+  width: 100%;
+  min-height: 70vh;
+
+  padding-block: 150px;
+  background-color: #f2f2f2;
+
+  @media screen and (max-width: 768px) {
+    padding-top: 0;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    width: 100%;
+    height: 150px;
+    background-image: url("/ripped-effect.svg");
+    background-size: cover;
+    transform: rotate(-180deg);
+
+    @media screen and (max-width: 768px) {
+      height: 80px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+
+    h3 {
+      display: flex;
+      align-items: baseline;
+      font-size: 7vw;
+      font-weight: 600;
+
+      .mini {
+        margin-left: 5vw;
+        font-size: 2vw;
+        font-weight: 500;
+      }
+    }
+
+    .o-ui-arrow {
+      width: 5vw;
+      stroke: rgba(158 158 158);
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.work__images {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+  margin-top: 6vw;
+  padding: 0 5vw;
+
+  .images__container {
+    overflow: hidden;
+    border-radius: 50px;
+
+    img {
+      width: 105%;
+    }
+
+    &-1 {
+      width: 55%;
+    }
+    &-2 {
+      width: 25%;
+      border-radius: 25px;
+    }
+    &-3 {
+      width: 50%;
     }
   }
 }
