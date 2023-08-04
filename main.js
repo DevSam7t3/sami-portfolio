@@ -129,7 +129,34 @@ function animateHero() {
       },
     });
 }
+
+function showCard() {
+  document.querySelectorAll(".images__container").forEach((cnt) => {
+    let image;
+    cnt.addEventListener("mousemove", (e) => {
+      image = e.target;
+      let elem = document.querySelector("#projects__cursor").children[0];
+
+      elem.style.opacity = 1;
+
+      elem.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+
+      image.style.filter = "grayscale(1)";
+
+      document.querySelector("#work").style.backgroundColor =
+        "#" + e.target.dataset.color;
+    });
+    cnt.addEventListener("mouseleave", (e) => {
+      document.querySelector("#projects__cursor").children[0].style.opacity = 0;
+      image.style.filter = "grayscale(0)";
+
+      document.querySelector("#work").style.backgroundColor = "#f2f2f2";
+    });
+  });
+}
+
 // calling functions
 createSpan();
 valuesSetters();
 loaderAnimation();
+showCard();
