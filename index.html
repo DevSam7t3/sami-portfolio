@@ -20,43 +20,72 @@
     <title>Devsam - Portfolio</title>
   </head>
   <body>
+    <div id="custom__cursor"></div>
+
     <!-- loader -->
-    <div class="loader">
-      <div class="heading__top">
-        <h5 class="reveal">web Portfolio</h5>
-        <h5 class="reveal">&copy; <span class="year"></span></h5>
+    <div class="loading__screen">
+      <div class="loader">
+        <div class="loader-1 bar"></div>
+        <div class="loader-2 bar"></div>
+        <div class="loader-3 bar"></div>
       </div>
-      <h2 class="reveal">
-        <span>Dev</span> <span class="font-fancy">Sam</span>
-        <span>&nbsp;is</span>
-        <span>&nbsp;a</span>
-      </h2>
-      <div class="green-overlay"></div>
+
+      <div class="counter">
+        <div class="counter-1 digit">
+          <div class="num">0</div>
+          <div class="num num1offset1">1</div>
+        </div>
+        <div class="counter-2 digit">
+          <div class="num">0</div>
+          <div class="num num1offset2">1</div>
+          <div class="num">2</div>
+          <div class="num">3</div>
+          <div class="num">4</div>
+          <div class="num">5</div>
+          <div class="num">6</div>
+          <div class="num">7</div>
+          <div class="num">8</div>
+          <div class="num">9</div>
+          <div class="num">0</div>
+        </div>
+        <div class="counter-3 digit">
+          <div class="num">0</div>
+          <div class="num">1</div>
+          <div class="num">2</div>
+          <div class="num">3</div>
+          <div class="num">4</div>
+          <div class="num">5</div>
+          <div class="num">6</div>
+          <div class="num">7</div>
+          <div class="num">8</div>
+          <div class="num">9</div>
+        </div>
+      </div>
     </div>
-    <!-- navbar -->
+
     <nav class="nav">
       <div class="container">
         <ul class="nav__list">
           <li class="nav__item">
-            <a href="/" class="nav__link">Samiullah</a>
+            <a href="/" class="nav__link magnet">Samiullah</a>
           </li>
           <li class="nav__item">
-            <a href="#" class="nav__link">Skills</a>
+            <a href="#" class="nav__link magnet">Skills</a>
           </li>
           <li class="nav__item">
-            <a href="#work" class="nav__link">Projects</a>
+            <a href="#work" class="nav__link magnet">Projects</a>
           </li>
           <li class="nav__item">
-            <a href="#" class="nav__link">Contact</a>
+            <a href="#" class="nav__link magnet">Contact</a>
           </li>
         </ul>
       </div>
     </nav>
     <main id="main">
-      <!-- hero section -->
+      <!-- home -->
       <div id="home">
         <div class="row row1">
-          <h1 class="reveal creative-text">Creative</h1>
+          <h1 class="reveal creative-text magnet">Creative</h1>
           <div class="text text1">
             <h5 class="reveal">CURRENTLY AVAILABLE FOR</h5>
             <h5 class="reveal">FREELANCE WORLDWIDE</h5>
@@ -225,10 +254,10 @@
             </svg>
           </div>
 
-          <h1 class="reveal developer-text">Developer</h1>
+          <h1 class="reveal developer-text magnet">Developer</h1>
         </div>
       </div>
-      <!-- about section -->
+      <!-- about -->
       <div class="imagery">
         <div class="imagery__left">
           <h2>
@@ -247,67 +276,60 @@
           <div class="img__container"></div>
         </div>
       </div>
-      <!-- work section -->
-      <div id="work" class="work">
-        <div class="work__row">
-          <!-- TODO: update the number of projects -->
-          <h3>
-            Feat Wo<span class="font-fancy">r&nbsp;</span>k
-            <div class="mini">(05)</div>
-          </h3>
-          <svg
-            class="o-ui-arrow"
-            width="64"
-            height="64"
-            viewBox="0 0 64 64"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M3.10162 3.10156L62.9999 62.9999"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            ></path>
-            <path
-              d="M63 1.00001L63 63L0.999989 63"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            ></path>
-          </svg>
+      <!-- skills -->
+      <div class="marquee">
+        <div class="marquee__inner">
+          <div class="marquee__part">
+            <p>dev sam</p>
+            <div class="arrow">&#8594;</div>
+          </div>
+          <div class="marquee__part">
+            <p>dev sam</p>
+            <div class="arrow">&#8594;</div>
+          </div>
+          <div class="marquee__part">
+            <p>dev sam</p>
+            <div class="arrow">&#8594;</div>
+          </div>
+          <div class="marquee__part">
+            <p>dev sam</p>
+            <div class="arrow">&#8594;</div>
+          </div>
+          <div class="marquee__part">
+            <p>dev sam</p>
+            <div class="arrow">&#8594;</div>
+          </div>
+          <div class="marquee__part">
+            <p>dev sam</p>
+            <div class="arrow">&#8594;</div>
+          </div>
         </div>
-        <div class="work__images">
-          <!-- project 1 -->
-          <div class="images__container images__container-1">
-            <img
-              data-color="d7ddf2"
-              data-index="0"
-              data-scroll
-              data-scroll-speed="-1.5"
-              src="https://abhishekjha.me/aeizei.7edf201c.png"
-              alt=""
-            />
+      </div>
+      <!-- projects -->
+      <div id="second">
+        <h2 class="title">experience</h2>
+        <div class="elem magnet">
+          <img src="./public/images/plug.png" alt="" />
+          <h1>Letsgrowmore</h1>
+          <div class="experience__date">
+            <h5>jul 2023</h5>
+            <h5>sep 2023</h5>
           </div>
-
-          <!-- project 2  -->
-          <div class="images__container images__container-2">
-            <img
-              data-color="edd5d5"
-              data-index="1"
-              data-scroll
-              data-scroll-speed="-1.5"
-              src="https://abhishekjha.me/display.835f9d62.png"
-              alt=""
-            />
+        </div>
+        <div class="elem magnet">
+          <img src="./public/images/ixperience.png" alt="" />
+          <h1>ineuron.ai</h1>
+          <div class="experience__date">
+            <h5>jun 2023</h5>
+            <h5>aug 2023</h5>
           </div>
-
-          <div id="projects__cursor">
-            <div>
-              <div class="cursor__row">
-                <div class="cursor__row-circle"></div>
-                <div class="cursor__row-button">Live Demo</div>
-              </div>
-              <div class="cursor__elem"></div>
-            </div>
+        </div>
+        <div class="elem magnet elemlast">
+          <img src="./public/images/hudu.png" alt="" />
+          <h1>silted</h1>
+          <div class="experience__date">
+            <h5>oct 2022</h5>
+            <h5>march 2023</h5>
           </div>
         </div>
       </div>

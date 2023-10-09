@@ -1,17 +1,13 @@
-import { Circ, Expo, Power3, gsap } from "gsap";
+import { Expo, Linear, Power1, Power2, Power3, Power4, gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // gsap
 gsap.registerPlugin(ScrollTrigger);
 
-// copyright year update
-const yearSpan = document.querySelector(".reveal .year");
-
-const date = new Date();
-const currentYear = date.getFullYear();
-yearSpan.textContent = currentYear;
+// loader animation
 
 // updating local time of pakistan
+const date = new Date();
 const localTimeHeading = document.querySelector(".local-time");
 
 const localTime = date.toLocaleTimeString([], {
@@ -31,6 +27,166 @@ localTimeHeading.textContent = localTime;
   });
 })();
 
+document.addEventListener("DOMContentLoaded", function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+  const counter3 = document.querySelector(".counter-3");
+
+  for (let i = 0; i < 2; i++) {
+    for (let j = 0; j < 10; j++) {
+      const div = document.createElement("div");
+      div.className = "num";
+      div.textContent = j;
+      counter3.appendChild(div);
+    }
+  }
+
+  const finalDiv = document.createElement("div");
+  finalDiv.className = "num";
+  finalDiv.textContent = "0";
+  counter3.appendChild(finalDiv);
+
+  animate(counter3, 5);
+  animate(document.querySelector(".counter-2"), 6);
+  animate(document.querySelector(".counter-1"), 2, 4);
+
+  function animate(counter, duration, delay = 0) {
+    const numHeight = counter.querySelector(".num").clientHeight;
+
+    const totalDistance =
+      (counter.querySelectorAll(".num").length - 1) * numHeight;
+
+    gsap.to(counter, {
+      y: -totalDistance,
+      duration,
+      delay,
+      ease: Power2.easeInOut,
+    });
+  }
+
+  gsap.to(".digit", {
+    top: "-150px",
+    stagger: {
+      amount: 0.25,
+    },
+    delay: 6,
+    duration: 1,
+    ease: Power4.easeInOut,
+  });
+
+  const loaderTl = gsap.timeline();
+
+  loaderTl
+    .from(".loader-1", {
+      width: 0,
+      duration: 6,
+      ease: Power2.easeInOut,
+    })
+    .from(".loader-2", {
+      width: 0,
+      duration: 0.1,
+      ease: Power2.easeInOut,
+    })
+    .from(".loader-3", {
+      width: 0,
+      duration: 0.1,
+      ease: Power2.easeInOut,
+    })
+    .to(".loader", {
+      background: "none",
+      delay: -6,
+      duration: 0.1,
+    })
+    .to(".num", {
+      color: "#14cf93",
+      delay: -1.3,
+    })
+    .to(".loader-1,.loader-2,.loader-3", {
+      backgroundColor: "#14cf93",
+      delay: -1.3,
+    });
+
+  if (loaderTl.isActive() !== true) {
+    gsap.to(".loader-1", {
+      rotate: -45,
+      duration: 0.5,
+      delay: 7,
+      ease: Power2.easeInOut,
+    });
+    gsap.to(".loader-3", {
+      width: "180px",
+      right: 0,
+      rotate: -45,
+      duration: 0.5,
+      delay: 7,
+      ease: Power2.easeInOut,
+    });
+  }
+
+  gsap.to(".loader", {
+    scale: 40,
+    duration: 1,
+    delay: 8,
+    ease: Power2.easeInOut,
+  });
+
+  gsap.to(".loader", {
+    rotate: 45,
+    duration: 1,
+    delay: 8,
+    ease: Power2.easeInOut,
+  });
+  gsap.to(".loading__screen", {
+    opacity: 0,
+    delay: 8.2,
+    ease: Power1.easeInOut,
+  });
+});
+
+function skillsAnimation() {
+  let currentScroll = 0;
+  let isScrollinDown = true;
+
+  let arrows = document.querySelectorAll(".arrow");
+
+  let tween = gsap
+    .to(".marquee__part", {
+      xPercent: -100,
+      repeat: -1,
+      duration: 5,
+      ease: Linear.easeInOut,
+    })
+    .totalProgress(0.5);
+
+  gsap.set(".marquee__inner", {
+    xPercent: -10,
+  });
+
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > currentScroll) {
+      isScrollinDown = true;
+      console.log("scrolling down");
+    } else {
+      isScrollinDown = false;
+      console.log("scrolling up");
+    }
+    gsap.to(tween, {
+      timeScale: isScrollinDown ? 1 : -1,
+    });
+
+    arrows.forEach((arrow) => {
+      if (isScrollinDown) {
+        arrow.classList.remove("active");
+      } else {
+        arrow.classList.add("active");
+      }
+    });
+
+    currentScroll = window.scrollY;
+  });
+}
 function valuesSetters() {
   gsap.set(".nav a", { y: "-100%", opacity: 0 });
   gsap.set("#home span .child", { y: "100%" });
@@ -58,43 +214,6 @@ function createSpan() {
     elem.innerHTML = "";
     elem.appendChild(spanParent);
   });
-}
-
-function loaderAnimation() {
-  const tl = gsap.timeline();
-
-  tl.from(".loader .child span", {
-    x: 100,
-    duration: 1.4,
-    stagger: 0.2,
-    ease: Power3.easeInOut,
-  })
-    .to(".loader .parent .child", {
-      y: "-100%",
-      duration: 1,
-      ease: Circ.easeInOut,
-    })
-    .to(".loader", {
-      height: 0,
-      duration: 1,
-      ease: Circ.easeInOut,
-    })
-    .to(".green-overlay", {
-      height: "100%",
-      top: 0,
-      delay: -1.5,
-      duration: 1,
-      ease: Circ.easeInOut,
-    })
-    .to(".green-overlay", {
-      height: "0%",
-      delay: -0.5,
-      duration: 1,
-      ease: Circ.easeInOut,
-      onComplete: () => {
-        animateHero();
-      },
-    });
 }
 
 function animateSvg() {
@@ -155,8 +274,55 @@ function showCard() {
   });
 }
 
+document.querySelectorAll(".elem").forEach(function (elem) {
+  var rotate = 0;
+  var diffrot = 0;
+
+  elem.addEventListener("mouseleave", function (dets) {
+    gsap.to(elem.querySelector("img"), {
+      opacity: 0,
+      ease: Power3,
+      duration: 0.5,
+    });
+  });
+
+  elem.addEventListener("mousemove", function (dets) {
+    var diff = dets.clientY - elem.getBoundingClientRect().top;
+    diffrot = dets.clientX - rotate;
+    rotate = dets.clientX;
+    gsap.to(elem.querySelector("img"), {
+      opacity: 1,
+      ease: Power3,
+      top: diff,
+      left: dets.clientX,
+      rotate: gsap.utils.clamp(-20, 20, diffrot * 2),
+    });
+  });
+});
+
+function circleMouseFollower() {
+  let magnet = document.querySelectorAll(".magnet");
+  let cursor = document.querySelector("#custom__cursor");
+
+  window.addEventListener("mousemove", function (dets) {
+    cursor.style.top = `${dets.clientY}px`;
+    cursor.style.left = `${dets.clientX}px`;
+  });
+
+  magnet.forEach((link) => {
+    link.addEventListener("mouseenter", function () {
+      cursor.style.padding = "3rem";
+    });
+    link.addEventListener("mouseleave", function () {
+      cursor.style.padding = "0.3rem";
+    });
+  });
+}
+
 // calling functions
+circleMouseFollower();
+animateHero();
 createSpan();
 valuesSetters();
-loaderAnimation();
 showCard();
+skillsAnimation();
