@@ -4,8 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 // gsap
 gsap.registerPlugin(ScrollTrigger);
 
-// loader animation
-
 // updating local time of pakistan
 const date = new Date();
 const localTimeHeading = document.querySelector(".local-time");
@@ -26,6 +24,24 @@ localTimeHeading.textContent = localTime;
     smooth: true,
   });
 })();
+
+// custom cursor
+Shery.mouseFollower({
+  //Parameters are optional.
+  skew: true,
+  ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+  duration: 1,
+  debug: true,
+});
+
+// cursor magnetic effect
+Shery.makeMagnet(".magnet" /* Element to target.*/, {
+  //Parameters are optional.
+  ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+  duration: 1,
+});
+
+// loader animation
 
 document.addEventListener("DOMContentLoaded", function () {
   window.scrollTo({
@@ -249,31 +265,7 @@ function animateHero() {
     });
 }
 
-function showCard() {
-  document.querySelectorAll(".images__container").forEach((cnt) => {
-    let image;
-    cnt.addEventListener("mousemove", (e) => {
-      image = e.target;
-      let elem = document.querySelector("#projects__cursor").children[0];
-
-      elem.style.opacity = 1;
-
-      elem.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-
-      image.style.filter = "grayscale(1)";
-
-      document.querySelector("#work").style.backgroundColor =
-        "#" + e.target.dataset.color;
-    });
-    cnt.addEventListener("mouseleave", (e) => {
-      document.querySelector("#projects__cursor").children[0].style.opacity = 0;
-      image.style.filter = "grayscale(0)";
-
-      document.querySelector("#work").style.backgroundColor = "#f2f2f2";
-    });
-  });
-}
-
+// experiences section
 document.querySelectorAll(".elem").forEach(function (elem) {
   var rotate = 0;
   var diffrot = 0;
@@ -300,29 +292,8 @@ document.querySelectorAll(".elem").forEach(function (elem) {
   });
 });
 
-function circleMouseFollower() {
-  let magnet = document.querySelectorAll(".magnet");
-  let cursor = document.querySelector("#custom__cursor");
-
-  window.addEventListener("mousemove", function (dets) {
-    cursor.style.top = `${dets.clientY}px`;
-    cursor.style.left = `${dets.clientX}px`;
-  });
-
-  magnet.forEach((link) => {
-    link.addEventListener("mouseenter", function () {
-      cursor.style.padding = "3rem";
-    });
-    link.addEventListener("mouseleave", function () {
-      cursor.style.padding = "0.3rem";
-    });
-  });
-}
-
 // calling functions
-circleMouseFollower();
 animateHero();
 createSpan();
 valuesSetters();
-showCard();
 skillsAnimation();

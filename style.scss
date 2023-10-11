@@ -43,19 +43,6 @@ body {
   display: none;
 }
 
-#custom__cursor {
-  transition: all linear 0.1s;
-  padding: 0.3rem;
-  position: fixed;
-  z-index: 99999;
-  border-radius: 50%;
-  background-color: #fff;
-  mix-blend-mode: difference;
-  pointer-events: none;
-  transform-origin: center;
-  transform: translate(-50%, -50%);
-}
-
 // loader styles
 .loading__screen {
   position: fixed;
