@@ -16,6 +16,10 @@
       href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.css"
     />
     <!-- custom styles -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="https://unpkg.com/sheryjs/dist/Shery.css" />
     <link rel="stylesheet" href="./style.scss" />
 
@@ -62,25 +66,23 @@
         </div>
       </div>
     </div>
-
-    <nav class="nav">
-      <div class="container">
-        <ul class="nav__list">
-          <li class="nav__item">
-            <a href="/" class="nav__link magnet">Samiullah</a>
-          </li>
-          <li class="nav__item">
-            <a href="#" class="nav__link magnet">Skills</a>
-          </li>
-          <li class="nav__item">
-            <a href="#work" class="nav__link magnet">Projects</a>
-          </li>
-          <li class="nav__item">
-            <a href="#" class="nav__link magnet">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <header>
+      <nav>
+        <a href="#home" class="active">
+          <i class="bx bx-home-alt-2"></i>
+        </a>
+        <a href="#about" id="#about">
+          <i class="bx bx-user"></i>
+        </a>
+        <a href="#experience" id="#experience">
+          <i class="bx bx-book"></i>
+        </a>
+        <a href="#contact" id="#contact">
+          <i class="bx bx-message-square-dots"></i>
+        </a>
+        <button class=""><i class="bx bx-cog"></i><AiOutlineSetting /></button>
+      </nav>
+    </header>
     <main id="main">
       <!-- home -->
       <div id="home">
@@ -258,7 +260,7 @@
         </div>
       </div>
       <!-- about -->
-      <div class="imagery">
+      <div class="imagery" id="about">
         <div class="imagery__left">
           <h2>
             I AM SAMIULLAH, I <br />
@@ -306,7 +308,7 @@
         </div>
       </div>
       <!-- projects -->
-      <div id="second">
+      <div class="second" id="experience">
         <h2 class="title">experience</h2>
         <div class="elem magnet">
           <img src="./public/images/plug.png" alt="" />

@@ -1,4 +1,4 @@
-import { Expo, Linear, Power1, Power2, Power3, Power4, gsap } from "gsap";
+import { Expo, Linear, Power3, gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // gsap
@@ -25,14 +25,38 @@ localTimeHeading.textContent = localTime;
   });
 })();
 
-// custom cursor
-Shery.mouseFollower({
-  //Parameters are optional.
-  skew: true,
-  ease: "cubic-bezier(0.23, 1, 0.320, 1)",
-  duration: 1,
-  debug: true,
+const navLinks = document.querySelectorAll("nav a");
+
+const navSelector = () => {
+  let pathname = window.location.hash;
+
+  if (pathname === "#home" || !pathname) {
+    return "#home";
+  } else if (pathname === "#about") {
+    return "#about";
+  } else if (pathname === "#services") {
+    return "#service";
+  } else if (pathname === "#contact") {
+    return "#contact";
+  }
+};
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", function (e) {
+    navLinks.forEach((elem) => {
+      elem.classList.remove("active");
+    });
+    link.classList.add("active");
+  });
 });
+
+// custom cursor
+// Shery.mouseFollower({
+//   //Parameters are optional.
+//   skew: true,
+//   ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+//   duration: 1,
+// });
 
 // cursor magnetic effect
 Shery.makeMagnet(".magnet" /* Element to target.*/, {
@@ -42,12 +66,17 @@ Shery.makeMagnet(".magnet" /* Element to target.*/, {
 });
 
 // loader animation
-
 document.addEventListener("DOMContentLoaded", function () {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
+  const hashName = navSelector();
+
+  if (hashName) {
+    document.querySelector(hashName).scrollIntoView();
+  } else {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
   const counter3 = document.querySelector(".counter-3");
 
   for (let i = 0; i < 2; i++) {
@@ -183,10 +212,8 @@ function skillsAnimation() {
   window.addEventListener("scroll", function () {
     if (window.scrollY > currentScroll) {
       isScrollinDown = true;
-      console.log("scrolling down");
     } else {
       isScrollinDown = false;
-      console.log("scrolling up");
     }
     gsap.to(tween, {
       timeScale: isScrollinDown ? 1 : -1,
